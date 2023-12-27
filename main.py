@@ -61,7 +61,7 @@ if __name__ == "__main__":
         trainer.train(model, datamodule)
     elif args.mode == "infer":
         print("infer")
-    elif args.mode == "anal":
-        print("anal")
+    elif args.mode == "analysis":
+        print("analysis")
     else:
         raise ValueError("Invalid mode")

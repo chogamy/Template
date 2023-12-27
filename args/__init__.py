@@ -1,7 +1,7 @@
 import argparse
 
 
-MODE = ["train", "infer", "anal"]
+MODE = ["train", "infer", "analysis"]
 TASK = ["e1c1", "1e2c", "1e1d", "1e2d", "2e1c"]
 WRAPPER = [None, "HF", "PL"]
 
