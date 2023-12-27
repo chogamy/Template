@@ -32,7 +32,7 @@
 # **/dataset_dict.json
 # **/dataset_info.json
 
-# __pycache__/
+__pycache__/
 
 # # Jupyter Notebook
 # .ipynb_checkpoints
