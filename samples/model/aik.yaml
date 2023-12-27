@@ -1,0 +1,13 @@
+model:
+  class_path: aik.aik.AIK
+  init_args:
+    model_name_or_path: bert-base-uncased
+    lr: 1.0e-03
+    plm_lr: 1.0e-05 # for plm
+    weight_decay: 0.01
+    scheduler_type: linear
+    warmup_steps: 0
+    l1: 1  # \lambda_1 in equation 7
+    l2: 1  # \lambda_2 in equation 7
+    l3: 1  # \lambda_3 in equation 7
+    margin: 300

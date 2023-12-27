@@ -1,0 +1,6 @@
+sampler: Convex
+sampler_config:
+  multiple_convex: 4
+  multiple_convex_eval: 1
+  batch_size: 64
+  oos_num: 64

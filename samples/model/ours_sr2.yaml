@@ -1,0 +1,10 @@
+model:
+  class_path: ours_sr.ours2.Ours2
+  init_args:
+    model_name_or_path: null
+    lr: 2.0e-05 #1.0e-03 
+    weight_decay: 0.01
+    scheduler_type: linear 
+    warmup_steps: 0
+    freeze: false
+    l: 0.3

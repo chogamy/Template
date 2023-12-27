@@ -1,0 +1,3 @@
+sampler: MultiConvex
+sampler_config:
+  max_len: 150
