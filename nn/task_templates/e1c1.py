@@ -9,13 +9,14 @@ class E1C1(nn.Module):
         try:
             self.encoder = AutoModel.from_pretrained(args.enc)
             config = AutoConfig.from_pretrained(args.enc)
+
+            print(config)
         except:
-            from nn_templates.encoder import Encoder
+            from nn.nn_templates.encoder import Encoder
 
             self.encoder = Encoder(args)
-            config = 
 
-        print(config)
+            # config:뭐.... 데이터 클래스 개수 이런거....
 
         assert 1 == 0
 
