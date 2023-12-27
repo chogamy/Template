@@ -52,9 +52,9 @@ from trainer import get_trainer
 if __name__ == "__main__":
     args = build_args()
 
-    model = get_model(args)
-    assert 1 == 0
     datamodule = get_datamodule(args)
+    assert 1 == 0
+    model = get_model(args)
     trainer = get_trainer(args)
 
     if args.mode == "train":

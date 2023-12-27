@@ -12,9 +12,14 @@ from ? import ?
 
 
 def get_datamodule(args):
-    if args.dataset == "?":
-        # from ? import ? as datamodule
-        data_module = ""
-        pass
+    if args.data == "jeanlee/kmhas_korean_hate_speech":
+        from .kmhas import _load_dataset
+
+        datasets = _load_dataset()
+
+        print(datasets)
+
+    data_module = None
+    assert 1 == 0
 
     return data_module
