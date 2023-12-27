@@ -1,8 +1,3 @@
-"""
-여기 데이터셋별로 datamodule
-from ? import ? 
-"""
-
 # from pytorch_lightning import LightningDataModule ???? 라이트닝이 데이터모듈도 있나?
 
 
