@@ -1,4 +1,25 @@
-나중에 다시 작성
+## TODO!
+Korean Hate Speech Test
+
+
+
+## Training
+```
+bash train.sh
+```
+
+
+## Inference
+```
+bash infer.sh
+```
+
+
+## Analysis
+```
+bash analysis.sh
+```
+
 
 <!-- # Open Intent Classification (WIP)
 
