@@ -32,7 +32,22 @@ bash analysis.sh
     - You can wrap your nn.Module by wrapper
     - You can also use compatible trainer 
     - Options: PL, HF, None, vLLM
+        PL - L.Module, L.DataModule, L.Trainer
+        HF - None, CustomDataModule, huggingface Trainer
+        None - None, CustomDataModule, Custom Trainer
+        vLLM - WIP
 - task
+    - You can use any architectures
+    - e: dncoder
+    - c: classifier
+    - d: decoder
+    - example: 
+        - e1d1 = Transformer
+        - e1c1 = BERT
+
+- [More details](https://github.com/jogamy/Template/tree/master/args)
+
+
 
 
 <!-- # Open Intent Classification (WIP)
