@@ -1,1 +1,20 @@
-YAML파일로 저장하세용~
+# type: .yaml
+
+## trainer args
+- Common
+    - Optimizer
+    - Callbacks
+    - batch_size, epochs etc...
+- Speicifir args per trainer
+    - HF
+    - PL
+
+## task args
+- e,c,d
+
+## nn args
+- enc
+- dec
+
+
+
