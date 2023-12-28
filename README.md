@@ -29,6 +29,9 @@ bash analysis.sh
 ## Key Arguments
 
 - wrapper
+    - You can wrap your nn.Module by wrapper
+    - You can also use compatible trainer 
+    - Options: PL, HF, None, vLLM
 - task
 
 
