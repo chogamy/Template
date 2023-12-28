@@ -29,8 +29,8 @@ bash analysis.sh
 ## Key Arguments
 
 - args.wrapper
-    - [You can wrap your nn.Module by wrapper]()
-    - [Use Compatible datamodule]()
+    - [You can wrap your nn.Module by wrapper](https://github.com/jogamy/Template/tree/master/nn/wrapper_templates)
+    - [Use Compatible datamodule](https://github.com/jogamy/Template/tree/master/data/datamodules)
     - [Use compatible trainer](https://github.com/jogamy/Template/tree/master/trainer)
     - Options: PL, HF, None, vLLM
         PL - L.Module, L.DataModule, L.Trainer
