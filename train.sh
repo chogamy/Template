@@ -3,7 +3,8 @@
 python main.py \
     --mode train \
     --task e1c1 \
-    --enc custom \
+    --enc monologg/koelectra-base-v3-discriminator \
+    --wrapper PL \
     --data jeanlee/kmhas_korean_hate_speech \
 
 # export TOKENIZERS_PARALLELISM=false

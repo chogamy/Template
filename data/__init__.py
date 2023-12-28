@@ -1,20 +1,26 @@
-"""
-task에 따라서 다른 데이터 모듈
-"""
-
-
 def preprocess(dataset, args):
-    """ """
-    args
+    """
+    task에 따라서 다른 전처리
+    어떻게 해야 할지 나중에 좀 생각하자
+    """
+    if args.task == "e1c1":
+        dataset = dataset.map(
+            lambda example: {
+                "input": example["text"],
+                "label": example["label"],
+            },
+        )
+    else:
+        raise NotImplementedError
 
     return dataset
 
 
 def get_datamodule(args):
     if args.data == "jeanlee/kmhas_korean_hate_speech":
-        from .datasets.kmhas.kmhas import _load_dataset
+        from .datasets.kmhas.kmhas import _load_dataset, get_dataconfig
 
-    datasets = _load_dataset()
+    dataset = _load_dataset()
     """
     DatasetDict({
     train: Dataset({
@@ -32,12 +38,14 @@ def get_datamodule(args):
     })
     """
 
+    data_config = get_dataconfig(args)
+    dataset = preprocess(dataset, args)
+
     if args.wrapper == "PL":
         from .datamodules.pl import DataModule
     elif args.wrapper in ["HF", None]:
         from .datamodules.custom import DataModule
 
-    data_module = DataModule(datasets, args)
-    assert 1 == 0
+    data_module = DataModule(args, dataset, data_config)
 
     return data_module

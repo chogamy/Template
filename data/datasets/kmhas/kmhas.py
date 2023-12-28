@@ -56,6 +56,11 @@ def _load_dataset():
 
     return load_dataset("jeanlee/kmhas_korean_hate_speech")
 
+def get_dataconfig(args):
+    id_to_label = {k: v for k, v in zip(IDS, LABELS)}
+    label_to_id = {k: v for k, v in zip(LABELS, IDS)}
+    dataconfig = {"id_to_label": id_to_label, "label_to_id": label_to_id}
+    return dataconfig
 
 if __name__ == "__main__":
     dataset = _load_dataset()

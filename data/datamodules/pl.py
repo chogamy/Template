@@ -3,11 +3,12 @@ from torch.utils.data import DataLoader
 
 
 class DataModule(L.LightningDataModule):
-    def __init__(self, dataset, args) -> None:
+    def __init__(self, args, dataset, data_config) -> None:
         super().__init__()
 
         self.dataset = dataset
         self.args = args
+        self.data_config = data_config
 
     def prepare_data(self) -> None:
         return super().prepare_data()

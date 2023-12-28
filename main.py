@@ -4,6 +4,25 @@ from data import get_datamodule
 from trainer import get_trainer
 
 
+if __name__ == "__main__":
+    args = build_args()
+
+    datamodule = get_datamodule(args)
+    model = get_model(args, datamodule.data_config)
+    trainer = get_trainer(args)
+    
+    assert 1==0
+
+    if args.mode == "train":
+        trainer.train(model, datamodule)
+    elif args.mode == "infer":
+        print("infer")
+    elif args.mode == "analysis":
+        print("analysis")
+    else:
+        raise ValueError("Invalid mode")
+
+
 # def get_callbacks(callback_list):
 #     callbacks = []
 #     for callback in callback_list:
@@ -47,21 +66,3 @@ from trainer import get_trainer
 #     if config.mode == "test":
 #         trainer.test(model=model, datamodule=datamodule)
 #     if config.mode == "visual":
-
-
-if __name__ == "__main__":
-    args = build_args()
-
-    datamodule = get_datamodule(args)
-    assert 1 == 0
-    model = get_model(args)
-    trainer = get_trainer(args)
-
-    if args.mode == "train":
-        trainer.train(model, datamodule)
-    elif args.mode == "infer":
-        print("infer")
-    elif args.mode == "analysis":
-        print("analysis")
-    else:
-        raise ValueError("Invalid mode")

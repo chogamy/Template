@@ -1,28 +1,26 @@
 import torch.nn as nn
 from transformers import AutoConfig, AutoModel
 
+from nn.nn_templates.encoder import Encoder
+
 
 class E1C1(nn.Module):
-    def __init__(self, args) -> None:
+    def __init__(self, args, data_config) -> None:
         super().__init__()
 
-        try:
-            self.encoder = AutoModel.from_pretrained(args.enc)
-            config = AutoConfig.from_pretrained(args.enc)
-
-            print(config)
-        except:
-            from nn.nn_templates.encoder import Encoder
-
+        if args.enc == "custom":
             self.encoder = Encoder(args)
+        else:
+            config = AutoConfig.from_pretrained(args.enc)
+            self.encoder = AutoModel.from_pretrained(args.enc)
 
-            # config:뭐.... 데이터 클래스 개수 이런거....
+        self.label_to_id = data_config["label_to_id"]
+        self.id_to_label = data_config["id_to_label"]
 
-        assert 1 == 0
-
-        self.classifier = nn.Linear()
+        self.classifier = nn.Linear(config.hidden_size, len(self.label_to_id))
 
         self.args = args
 
-    def forward(self):
+    def forward(self, batch):
+        hidden = self.encoder(batch["input_ids"])
         pass

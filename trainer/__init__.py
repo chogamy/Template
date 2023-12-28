@@ -3,10 +3,10 @@ class TrainerWrapper:
         self.trainer = trainer
         self.args = args
 
-    def train(self):
-        if self.args.wrapper == "pytorch_lightning":
-            pass
-        elif self.args.wrapper == "pytorch":
+    def train(self, model, datamodule):
+        if self.args.wrapper == "PL":
+            self.trainer.fit(model, datamodule)
+        elif self.args.wrapper == "HF":
             pass
         elif self.args.wrapper == None:
             pass
@@ -19,21 +19,15 @@ class TrainerWrapper:
 
 
 def get_trainer(args):
-    """
-    wrapper에 따라서 학습..?
-    pytorch lighting
-    그냥 파이토치
-    그냥 쌩으로
-    허깅페이스
-    이런걸루?
-    """
     if args.wrapper == "PL":
-        """
-        import pytorch_lightning as Trainer
-        trainer = Trainer()
-        """
+        from lightning.pytorch import Trainer
+    elif args.wrapper == "HF":
+        from transformers import Trainer
+    elif args.wrapper == None:
+        from .custom import Trainer
+        
 
-        trainer = ""
-        pass
+    trainer = Trainer()
+        
 
     return TrainerWrapper(trainer, args)
