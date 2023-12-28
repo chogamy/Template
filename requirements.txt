@@ -4,3 +4,4 @@ transformers
 datasets
 torchmetrics
 jsonargparse[signatures]
+ordered-set

@@ -24,6 +24,7 @@ def build_args():
 
     args = parser.parse_args()
 
+    # TODO: 시드를 여기서 고정해도 되는지 확인
     def set_seed(args):
         if args.wrapper == "PL":
             from lightning.pytorch import seed_everything
@@ -39,7 +40,7 @@ def build_args():
     set_seed(args)
 
     def check_args(args):
-        assert args.mode in MODE, f"Invalid mode,{MODE}"
+        assert args.mode in MODE, f"Invalid mode, {MODE}"
         assert args.task in TASK, f"Invalid task, {TASK}"
         assert args.wrapper in WRAPPER, "Invalid wrapper"
         return args
