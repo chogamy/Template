@@ -28,15 +28,16 @@ bash analysis.sh
 
 ## Key Arguments
 
-- wrapper
-    - You can wrap your nn.Module by wrapper
-    - You can also use compatible trainer 
+- args.wrapper
+    - [You can wrap your nn.Module by wrapper]()
+    - [Use Compatible datamodule]()
+    - [Use compatible trainer](https://github.com/jogamy/Template/tree/master/trainer)
     - Options: PL, HF, None, vLLM
         PL - L.Module, L.DataModule, L.Trainer
         HF - None, CustomDataModule, huggingface Trainer
         None - None, CustomDataModule, Custom Trainer
         vLLM - WIP
-- task
+- args.task
     - You can use any architectures
     - e: dncoder
     - c: classifier
