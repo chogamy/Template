@@ -20,16 +20,16 @@ def get_datamodule(args):
     train: Dataset({
         features: ['text', 'label'],
         num_rows: ????
-    })
+        })
     validation: Dataset({
         features: ['text', 'label'],
         num_rows: ????
-    })
+        })
     test: Dataset({
         features: ['text', 'label'],
         num_rows: ????
+        })
     })
-})
     """
 
     if args.wrapper == "PL":

@@ -1,0 +1,20 @@
+id_to_label:
+  0: Origin
+  1: Physical
+  2: Politics
+  3: Profanity
+  4: Age
+  5: Gender
+  6: Race
+  7: Religion
+  8: Not Hate Speech
+label_to_id:
+  Age: 4
+  Gender: 5
+  Not Hate Speech: 8
+  Origin: 0
+  Physical: 1
+  Politics: 2
+  Profanity: 3
+  Race: 6
+  Religion: 7
