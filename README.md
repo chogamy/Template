@@ -38,8 +38,8 @@ bash analysis.sh
         None - None, CustomDataModule, Custom Trainer
         vLLM - WIP
 - args.task
-    - You can use any architectures
-    - e: dncoder
+    - [You can use any architectures](https://github.com/jogamy/Template/tree/master/nn/task_templates)
+    - e: encoder
     - c: classifier
     - d: decoder
     - example: 
