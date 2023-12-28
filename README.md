@@ -1,6 +1,10 @@
 ## TODO!
 Korean Hate Speech Test
 
+## Prepare
+```
+pip install -r requirements
+```
 
 
 ## Training
@@ -19,6 +23,13 @@ bash infer.sh
 ```
 bash analysis.sh
 ```
+
+------------------------
+
+## Key Arguments
+
+- wrapper
+- task
 
 
 <!-- # Open Intent Classification (WIP)
