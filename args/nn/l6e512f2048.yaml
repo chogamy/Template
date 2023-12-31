@@ -1,0 +1,3 @@
+layers: 6
+emb: 512
+ffn: 2048

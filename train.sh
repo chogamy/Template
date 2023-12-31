@@ -3,6 +3,10 @@
 python main.py \
     --mode train \
     --task e1c1 \
+    --trainer e100b32lr5e-4d0.1 \
+    --callbacks earlystopping,modelcheckpoint \
+    --optimizers adamw \
+    --lrscheduler constant \
     --enc monologg/koelectra-base-v3-discriminator \
     --wrapper PL \
     --data jeanlee/kmhas_korean_hate_speech \

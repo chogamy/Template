@@ -1,3 +1,5 @@
+# 이 패키지 안에 hf.py, pl.py, custom.py가 있어야 하나?
+
 class TrainerWrapper:
     def __init__(self, trainer, args) -> None:
         self.trainer = trainer
@@ -17,6 +19,10 @@ class TrainerWrapper:
     def test(self):
         pass
 
+def get_trainerargs(args):
+    pass
+
+
 
 def get_trainer(args):
     if args.wrapper == "PL":
@@ -25,6 +31,16 @@ def get_trainer(args):
         from transformers import Trainer
     elif args.wrapper == None:
         from .custom import Trainer
+
+    
+    trainer_args = args.trainer
+
+    print(args.trainer)
+    print(args.lrscheduler)
+    print(args.optimizers)
+    print(args.callbacks)
+
+    assert 1==0
         
 
     trainer = Trainer()

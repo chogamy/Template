@@ -1,3 +1,4 @@
-epochs: 100
+epoch: 100
 batch_size: 32
+lr: 5e-4
 drop_out: 0.1
