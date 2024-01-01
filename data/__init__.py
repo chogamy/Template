@@ -41,9 +41,9 @@ def get_datamodule(args):
     data_config = get_dataconfig(args)
     dataset = preprocess(dataset, args)
 
-    if args.wrapper == "PL":
+    if args.wrapper == "lightning.pytorch":
         from .datamodules.pl import DataModule
-    elif args.wrapper in ["HF", None]:
+    elif args.wrapper in ["transformers", "custom"]:
         from .datamodules.custom import DataModule
 
     data_module = DataModule(args, dataset, data_config)

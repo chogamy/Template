@@ -1,19 +1,17 @@
-"""
-wrapper를 여기서 만들어도 될듯?
-"""
+from importlib import import_module
 
 
 def get_model(args, data_config):
-    def build_model_by_task(args):
-        nn = None
-        if args.task == "e1c1":
-            from .task_templates.e1c1 import E1C1
+    task, model = args.model.split(".")
 
-            nn = E1C1(args, data_config)
-            
-        return nn
+    task = import_module(f"nn.task_templates.{task}")
 
-    nn = build_model_by_task(args)
+    if args.mode == "train":
+        nn = getattr(task, model)(args, data_config)
+    else:
+        raise ValueError("not yet")
+
+    # TODO: wrapper 어차피 PL밖에 없는데...
 
     if args.wrapper == "PL":
         from nn.wrapper_templates.pl import Wrapper

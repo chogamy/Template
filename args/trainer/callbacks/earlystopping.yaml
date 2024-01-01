@@ -1,0 +1,3 @@
+patience: 5 
+monitor: val_acc
+mode: max

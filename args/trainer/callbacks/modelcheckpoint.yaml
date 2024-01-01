@@ -1,0 +1,5 @@
+dirpath: example
+filename: example
+save_top_k: 1
+monitor: val_acc
+mode: max
