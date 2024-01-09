@@ -1,7 +1,7 @@
-import pytorch_lightning as pl
+from pytorch_lightning import LightningModule
 
 
-class Wrapper(pl.LightningModule):
+class Wrapper(LightningModule):
     def __init__(self, args, nn):
         super().__init__()
         self.nn = nn
@@ -24,4 +24,5 @@ class Wrapper(pl.LightningModule):
         """
         Optimizers and LR Schedulers
         """
+        assert 1 == 0
         pass

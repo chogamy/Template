@@ -9,21 +9,30 @@ class TrainerWrapper:
         self.args = args
 
     def run(self, model, datamodule):
-        pass
+        if self.args.mode == "train":
+            self.train(model, datamodule)
+        elif self.args.mode == "infer":
+            self.test(model, datamodule)
 
     def train(self, model, datamodule):
-        if self.args.wrapper == "PL":
+        if self.args.wrapper == "lightning.pytorch":
             self.trainer.fit(model, datamodule)
-        elif self.args.wrapper == "HF":
+        elif self.args.wrapper == "transformers":
             pass
-        elif self.args.wrapper == None:
+        elif self.args.wrapper == "trainer.custom":
             pass
+        else:
+            raise ValueError("Invalid wrapper")
 
-    def eval(self):
-        pass
-
-    def test(self):
-        pass
+    def test(self, model, datamodule):
+        if self.args.wrapper == "lightning.pytorch":
+            self.trainer.test(model, datamodule)
+        elif self.args.wrapper == "transformers":
+            pass
+        elif self.args.wrapper == "trainer.custom":
+            pass
+        else:
+            raise ValueError("Invalid wrapper")
 
 
 def build_trainerargs(args):

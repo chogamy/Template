@@ -10,14 +10,8 @@ if __name__ == "__main__":
     datamodule = get_datamodule(args)
     model = get_model(args, datamodule.data_config)
     trainer = get_trainer(args)
-    assert 1 == 0
 
-    # 내부에서 처리해도 될듯
-    trainer.run()
-    # if args.mode == "train":
-    #     trainer.train(model, datamodule)
-    # elif args.mode == "infer":
-    #     print("infer")
+    trainer.run(model, datamodule)
 
     if args.mode == "analysis":
         print("analysis")

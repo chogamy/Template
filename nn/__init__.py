@@ -12,15 +12,16 @@ def get_model(args, data_config):
         raise ValueError("not yet")
 
     # TODO: wrapper 어차피 PL밖에 없는데...
-
-    if args.wrapper == "PL":
+    if args.wrapper == "lightning.pytorch":
         from nn.wrapper_templates.pl import Wrapper
 
         nn = Wrapper(args, nn)
 
-    elif args.wrapper == "HF":
+    elif args.wrapper == "transformers":
         pass
-    elif args.wrapper == None:
+    elif args.wrapper == "trainer.custom":
         pass
+    else:
+        raise ValueError("Invalid wrapper")
 
     return nn
