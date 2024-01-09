@@ -64,8 +64,6 @@ def build_trainerargs(args):
         trainer_args["default_root_dir"] = args.model_path
         trainer_args["max_epochs"] = trainer["epoch"]
 
-        optimizers
-
         # callbacks
         _callbacks = []
         for callback in callbacks:

@@ -1,4 +1,0 @@
-epoch: 100
-batch_size: 32
-lr: 5e-4
-drop_out: 0.1 # 드랍아웃이 여기 있을 필요가 없나?

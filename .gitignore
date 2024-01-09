@@ -1,21 +1,9 @@
 # 다시 작성
 
+save_dir/*
 # # Model ckpt
 # outputs/*
 # trainer_logs/*
-
-# # yamls
-# samples/adb/banking
-# samples/adb/oos
-# samples/adb/stackoverflow
-# samples/K_1_way/banking
-# samples/K_1_way/oos
-# samples/K_1_way/stackoverflow
-# samples/knncl/banking
-# samples/knncl/oos
-# samples/knncl/stackoverflow
-# # results
-# # adb_result.csv
 
 # results/*.csv
 # nohup*

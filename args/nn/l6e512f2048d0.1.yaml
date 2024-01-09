@@ -1,3 +1,4 @@
 layers: 6
 emb: 512
 ffn: 2048
+dropout: 0.1

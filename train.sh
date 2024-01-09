@@ -3,7 +3,7 @@
 python main.py \
     --mode train \
     --model e1c1.E1C1 \
-    --trainer e100b32lr5e-4d0.1 \
+    --trainer e100b32lr5e-4 \
     --callbacks earlystopping,modelcheckpoint \
     --optimizers adamw \
     --lrscheduler constant \
