@@ -1,7 +1,9 @@
-from pytorch_lightning import LightningModule
+import lightning as L
+
+# from pytorch_lightning import LightningModule
 
 
-class Wrapper(LightningModule):
+class Wrapper(L.LightningModule):
     def __init__(self, args, nn):
         super().__init__()
         self.nn = nn
