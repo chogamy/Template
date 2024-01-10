@@ -1,8 +1,6 @@
 import argparse
 
 
-MODE = ["train", "infer", "analysis"]
-MODEL = ["e1c1.E1C1"]
 TASK = ["e1c1"]
 WRAPPER = ["trainer.custom", "transformers", "lightning.pytorch"]
 OPTIMIZER = ["adamw", "adam"]
@@ -12,9 +10,21 @@ LRSCHEDULER = ["cosine", "constant"]
 
 def build_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", default=None, required=True, type=str, help="mode")
     parser.add_argument(
-        "--model", default=None, required=True, type=str, help="task.model"
+        "--mode",
+        default=None,
+        required=True,
+        type=str,
+        help="mode",
+        choices=["train", "infer", "analysis"],
+    )
+    parser.add_argument(
+        "--model",
+        default=None,
+        required=True,
+        type=str,
+        help="task.model",
+        choices=["e1c1.E1C1"],
     )
     parser.add_argument("--task", default=None, type=str, help="task")
     parser.add_argument("--data", default=None, required=True, type=str, help="data")
@@ -61,25 +71,25 @@ def build_args():
 
     args.task = args.model.rsplit(".", 1)[0]
 
-    def check_args(args):
-        assert (
-            args.mode in MODE
-        ), f"Invalid mode\n Avail modes: {MODE}\n YOU:{args.mode}"
-        assert (
-            args.model in MODEL
-        ), f"Invalid model\n Avail models: {MODEL}\n YOU:{args.model}"
-        assert (
-            args.task in TASK
-        ), f"Invalid task\n Avail tasks: {TASK}\n YOU:{args.task}"
-        assert (
-            args.wrapper in WRAPPER
-        ), f"Invalid wrapper\n Avail wrappers: {WRAPPER}\n YOU:{args.wrapper}"
-        assert (
-            args.optimizers in OPTIMIZER
-        ), f"Invalid optimizer\n Avail optimizers: {OPTIMIZER}\n YOU:{args.optimizers}"
-        assert (
-            args.lrscheduler in LRSCHEDULER
-        ), f"Invalid lrscheduler\n Avail optimizers: {LRSCHEDULER}\n YOU:{args.lrscheduler}"
-        return args
+    # def check_args(args):
+    #     assert (
+    #         args.mode in MODE
+    #     ), f"Invalid mode\n Avail modes: {MODE}\n YOU:{args.mode}"
+    #     assert (
+    #         args.model in MODEL
+    #     ), f"Invalid model\n Avail models: {MODEL}\n YOU:{args.model}"
+    #     assert (
+    #         args.task in TASK
+    #     ), f"Invalid task\n Avail tasks: {TASK}\n YOU:{args.task}"
+    #     assert (
+    #         args.wrapper in WRAPPER
+    #     ), f"Invalid wrapper\n Avail wrappers: {WRAPPER}\n YOU:{args.wrapper}"
+    #     assert (
+    #         args.optimizers in OPTIMIZER
+    #     ), f"Invalid optimizer\n Avail optimizers: {OPTIMIZER}\n YOU:{args.optimizers}"
+    #     assert (
+    #         args.lrscheduler in LRSCHEDULER
+    #     ), f"Invalid lrscheduler\n Avail optimizers: {LRSCHEDULER}\n YOU:{args.lrscheduler}"
+    #     return args
 
-    return check_args(args)
+    return args

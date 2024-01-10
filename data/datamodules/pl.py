@@ -12,16 +12,33 @@ class DataModule(L.LightningDataModule):
         self.data_config = data_config
 
     def prepare_data(self) -> None:
-        return super().prepare_data()
+        assert 1 == 0
 
     def setup(self, stage: str) -> None:
-        return super().setup(stage)
+        self.prepare_data()
+        if stage == "fit":
+            print("fit")
+
+        elif stage == "test":
+            print("test")
 
     def train_dataloader(self):
-        return DataLoader(self.dataset["train"])
+        return DataLoader(
+            self.dataset["train"],
+            batch_size=self.args.batch_size,
+            num_workers=self.args.num_workers,
+        )
 
     def val_dataloader(self):
-        return DataLoader(self.dataset["val"])
+        return DataLoader(
+            self.dataset["val"],
+            batch_size=self.args.batch_size,
+            num_workers=self.args.num_workers,
+        )
 
     def test_dataloader(self):
-        return DataLoader(self.dataset["test"])
+        return DataLoader(
+            self.dataset["test"],
+            batch_size=self.args.batch_size,
+            num_workers=self.args.num_workers,
+        )
