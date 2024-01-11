@@ -39,7 +39,7 @@ def build_trainerargs(args):
     path = os.path.join("args", "trainer")
 
     wrapper = os.path.join(path, args.wrapper)
-    trainer = os.path.join(path, args.trainer)
+    # trainer = os.path.join(path, args.trainer)
     lrscheduler = os.path.join(path, "lrschedulers", args.lrscheduler)
     optimizers = os.path.join(path, "optimizers", args.optimizers)
     callbacks = [
@@ -51,8 +51,8 @@ def build_trainerargs(args):
         wrapper = yaml.load(f, Loader=yaml.FullLoader)
         trainer_args = {**wrapper}
 
-    with open(f"{trainer}.yaml") as f:
-        trainer = yaml.load(f, Loader=yaml.FullLoader)
+    # with open(f"{trainer}.yaml") as f:
+    #     trainer = yaml.load(f, Loader=yaml.FullLoader)
 
     with open(f"{lrscheduler}.yaml") as f:
         lrscheduler = yaml.load(f, Loader=yaml.FullLoader)
@@ -62,7 +62,7 @@ def build_trainerargs(args):
 
     if args.wrapper == "lightning.pytorch":
         trainer_args["default_root_dir"] = args.model_path
-        trainer_args["max_epochs"] = trainer["epoch"]
+        trainer_args["max_epochs"] = args.trainer["epoch"]
 
         # callbacks
         _callbacks = []
@@ -87,14 +87,6 @@ def build_trainerargs(args):
         trainer_args["callbacks"] = callbacks
 
     return trainer_args
-
-    return {
-        "trainer_args": trainer_args,
-        "trainer": trainer,
-        "lrscheduler": lrscheduler,
-        "optimizers": optimizers,
-        "callbacks": callbacks,
-    }
 
 
 def get_trainer(args):

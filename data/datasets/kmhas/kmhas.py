@@ -1,8 +1,9 @@
 import os
 import yaml
 
-
+from sklearn.preprocessing import MultiLabelBinarizer
 from datasets import load_dataset
+from transformers import AutoTokenizer
 
 """
 데이터셋 관련한 전처리,
@@ -51,16 +52,46 @@ def _load_dataset():
         })
     })
     """
+    dataset = load_dataset("jeanlee/kmhas_korean_hate_speech")
+    dataset["val"] = dataset.pop("validation")
 
     # cache 고민
 
-    return load_dataset("jeanlee/kmhas_korean_hate_speech")
+    return dataset
+
 
 def get_dataconfig(args):
     id_to_label = {k: v for k, v in zip(IDS, LABELS)}
     label_to_id = {k: v for k, v in zip(LABELS, IDS)}
-    dataconfig = {"id_to_label": id_to_label, "label_to_id": label_to_id}
+    tokenizer = AutoTokenizer.from_pretrained(args.enc)
+
+    dataconfig = {
+        "id_to_label": id_to_label,
+        "label_to_id": label_to_id,
+        "tokenizer": tokenizer,
+    }
     return dataconfig
+
+
+def preprocess(example, tokenizer, args):
+    """
+    Task 별로 다른 전처리 필요
+    """
+    # if args.task == "e1c1":
+    model_input = tokenizer(
+        example["text"],
+        max_length=args.max_length,
+        padding="max_length",
+        truncation=True,
+    )
+
+    model_input["n_label"] = [len(label) for label in example["label"]]
+    mlb = MultiLabelBinarizer(classes=[0, 1, 2, 3, 4, 5, 6, 7, 8])
+    one_hot_labels = mlb.fit_transform(example["label"])
+    model_input["label"] = one_hot_labels.tolist()
+
+    return model_input
+
 
 if __name__ == "__main__":
     dataset = _load_dataset()

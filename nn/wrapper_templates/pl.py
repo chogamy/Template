@@ -59,14 +59,14 @@ class Wrapper(L.LightningModule):
             },
         ]
 
-        path = os.path.join("args", "trainer", self.args.trainer)
+        # path = os.path.join("args", "trainer", self.args.trainer)
 
-        with open(f"./{path}.yaml") as f:
-            trainer_args = yaml.load(f, Loader=yaml.FullLoader)
+        # with open(f"./{path}.yaml") as f:
+        #     trainer_args = yaml.load(f, Loader=yaml.FullLoader)
 
         if self.args.optimizers == "adamw":
             optimizer = torch.optim.AdamW(
-                optimizer_grouped_parameters, lr=float(trainer_args["lr"])
+                optimizer_grouped_parameters, lr=float(self.args.trainer["lr"])
             )
         else:
             raise ValueError

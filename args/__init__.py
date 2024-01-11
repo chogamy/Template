@@ -1,11 +1,23 @@
+import os
+import yaml
 import argparse
 
 
 TASK = ["e1c1"]
-WRAPPER = ["trainer.custom", "transformers", "lightning.pytorch"]
 OPTIMIZER = ["adamw", "adam"]
 # 밑에 애들 이름은 고민좀 하자
 LRSCHEDULER = ["cosine", "constant"]
+
+
+def build_trainerargs(args):
+    path = os.path.join("args", "trainer")
+    trainer = os.path.join(path, args.trainer)
+    with open(f"{trainer}.yaml") as f:
+        trainer = yaml.load(f, Loader=yaml.FullLoader)
+
+    args.trainer = trainer
+
+    return args
 
 
 def build_args():
@@ -28,7 +40,13 @@ def build_args():
     )
     parser.add_argument("--task", default=None, type=str, help="task")
     parser.add_argument("--data", default=None, required=True, type=str, help="data")
-    parser.add_argument("--wrapper", default=None, type=str, help="data")
+    parser.add_argument(
+        "--wrapper",
+        default=None,
+        type=str,
+        help="wrapper",
+        choices=["trainer.custom", "transformers", "lightning.pytorch"],
+    )
     parser.add_argument("--seed", default=42, type=int, help="seed")
     parser.add_argument("--model_path", default=None, type=str, help="save_dir")
 
@@ -45,6 +63,8 @@ def build_args():
     parser.add_argument(
         "--lrscheduler", default=None, required=True, type=str, help="LRScheduler"
     )
+
+    parser.add_argument("--max_length", default=512, type=int, help="max_length")
 
     # Encoder args, 여러개일 경우 ,로 구분
     parser.add_argument("--enc", default=None, type=str, help="Encoder")
@@ -71,25 +91,6 @@ def build_args():
 
     args.task = args.model.rsplit(".", 1)[0]
 
-    # def check_args(args):
-    #     assert (
-    #         args.mode in MODE
-    #     ), f"Invalid mode\n Avail modes: {MODE}\n YOU:{args.mode}"
-    #     assert (
-    #         args.model in MODEL
-    #     ), f"Invalid model\n Avail models: {MODEL}\n YOU:{args.model}"
-    #     assert (
-    #         args.task in TASK
-    #     ), f"Invalid task\n Avail tasks: {TASK}\n YOU:{args.task}"
-    #     assert (
-    #         args.wrapper in WRAPPER
-    #     ), f"Invalid wrapper\n Avail wrappers: {WRAPPER}\n YOU:{args.wrapper}"
-    #     assert (
-    #         args.optimizers in OPTIMIZER
-    #     ), f"Invalid optimizer\n Avail optimizers: {OPTIMIZER}\n YOU:{args.optimizers}"
-    #     assert (
-    #         args.lrscheduler in LRSCHEDULER
-    #     ), f"Invalid lrscheduler\n Avail optimizers: {LRSCHEDULER}\n YOU:{args.lrscheduler}"
-    #     return args
+    args = build_trainerargs(args)
 
     return args

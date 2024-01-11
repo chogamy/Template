@@ -11,7 +11,7 @@ def get_model(args, data_config):
     else:
         raise ValueError("not yet")
 
-    # TODO: wrapper 어차피 PL밖에 없는데...
+    # TODO: wrapper 어차피 PL밖에 없는데 이렇게 해야할까?
     if args.wrapper == "lightning.pytorch":
         from nn.wrapper_templates.pl import Wrapper
 
