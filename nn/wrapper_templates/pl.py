@@ -18,22 +18,19 @@ class Wrapper(L.LightningModule):
         # self.save_hyperparameters()
 
     def forward(self, batch):
-        print("forward")
-        print(batch)
-        assert 1 == 0
-        pass
+        logits = self.nn(**batch)
+
+        return logits
 
     def training_step(self, batch, batch_idx):
-        print("train")
-        print(batch)
-        assert 1 == 0
-        pass
+        labels = batch.pop("labels", None)
+        n_label = batch.pop("n_label", None)
+        logits = self.nn(batch)
 
     def validation_step(self, batch, batch_idx):
-        print("valid")
-        print(batch)
-        assert 1 == 0
-        pass
+        labels = batch.pop("labels", None)
+        n_label = batch.pop("n_label", None)
+        logits = self.nn(batch)
 
     def test_step(self, batch, batch_idx):
         pass
