@@ -1,9 +1,0 @@
-data:
-  data_path: jeanlee/kmhas_korean_hate_speech
-  dataset: kmhas
-  model_name_or_path: null
-  known_cls_ratio: null
-  labeled_ratio: 1.0
-  max_seq_len: 128 
-  batch_size: 32
-  num_workers: 8

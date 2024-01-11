@@ -1,9 +1,0 @@
-model:
-  class_path: adb.adb.ADB
-  init_args:
-    model_name_or_path: null
-    lr: 5e-2
-    weight_decay: 0.0
-    scheduler_type: constant # linear
-    warmup_steps: 0
-    freeze: True

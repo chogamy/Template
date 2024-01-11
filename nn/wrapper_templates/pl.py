@@ -15,7 +15,7 @@ class Wrapper(L.LightningModule):
 
         self.args = args
 
-        self.save_hyperparameters()
+        # self.save_hyperparameters()
 
     def forward(self, batch):
         print("forward")
